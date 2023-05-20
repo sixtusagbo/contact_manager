@@ -4,20 +4,21 @@ import AddContact from './components/contacts/AddContact';
 import Contacts from './components/contacts/Contacts';
 import EditContact from './components/contacts/EditContact';
 import Header from './components/layout/Header';
+import Misc from './components/misc/Misc';
 import About from './components/pages/About';
+import NotFound from './components/pages/NotFound';
 
 import { Provider } from './context';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 import './App.css';
-import Misc from './components/misc/Misc';
-import NotFound from './components/pages/NotFound';
 
 class App extends Component {
   render() {
     return (
       <Provider>
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
           <div className="App">
             <Header brandName="Contact Manager" />
             <div className="container">
