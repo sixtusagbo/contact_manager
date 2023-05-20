@@ -1,10 +1,20 @@
 import React, { Component } from 'react';
 
 class Misc extends Component {
-  state = {};
+  state = {
+    title: '',
+    body: '',
+  };
 
   componentDidMount() {
-    console.log('componentDidMount');
+    fetch('https://jsonplaceholder.typicode.com/posts/1')
+      .then(response => response.json())
+      .then(data =>
+        this.setState({
+          title: data.title,
+          body: data.body,
+        })
+      );
   }
 
   componentDidUpdate() {
@@ -20,9 +30,13 @@ class Misc extends Component {
   }
 
   render() {
+    const { title, body } = this.state;
+
     return (
       <div>
-        <h2>Miscellaneous</h2>
+        <h1>Miscellaneous</h1>
+        <h4>{title}</h4>
+        <p>{body}</p>
       </div>
     );
   }
