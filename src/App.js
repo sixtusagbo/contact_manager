@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import AddContact from './components/contacts/AddContact';
 import Contacts from './components/contacts/Contacts';
 import Header from './components/layout/Header';
+import About from './components/pages/About';
 
 import { Provider } from './context';
 
@@ -12,13 +14,18 @@ class App extends Component {
   render() {
     return (
       <Provider>
-        <div className="App">
-          <Header brandName="Contact Manager" />
-          <div className="container">
-            <AddContact />
-            <Contacts />
+        <Router>
+          <div className="App">
+            <Header brandName="Contact Manager" />
+            <div className="container">
+              <Routes>
+                <Route path="/" element={<Contacts />} />
+                <Route path="about" element={<About />} />
+                <Route path="contact/add" element={<AddContact />} />
+              </Routes>
+            </div>
           </div>
-        </div>
+        </Router>
       </Provider>
     );
   }
