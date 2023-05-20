@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import AddContact from './components/contacts/AddContact';
 import Contacts from './components/contacts/Contacts';
+import EditContact from './components/contacts/EditContact';
 import Header from './components/layout/Header';
 import About from './components/pages/About';
 
@@ -24,6 +25,7 @@ class App extends Component {
                 <Route path="/" element={<Contacts />} />
                 <Route path="about" element={<About />} />
                 <Route path="contact/add" element={<AddContact />} />
+                <Route path="contact/edit/:id" element={<EditContact />} />
                 <Route path="misc" element={<Misc />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
