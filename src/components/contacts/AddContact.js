@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { v4 as uuid } from 'uuid';
 import { Consumer } from '../../context';
+import { withNavigate } from '../../hocs';
 import TextInputGroup from '../layout/TextInputGroup';
 
 class AddContact extends Component {
@@ -46,6 +47,8 @@ class AddContact extends Component {
       email: '',
       phone: '',
     });
+
+    this.props.navigate('/');
   };
 
   render() {
@@ -101,4 +104,4 @@ class AddContact extends Component {
   }
 }
 
-export default AddContact;
+export default withNavigate(AddContact);
