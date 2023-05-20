@@ -9,6 +9,7 @@ import { Provider } from './context';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import Misc from './components/misc/Misc';
 import NotFound from './components/pages/NotFound';
 
 class App extends Component {
@@ -23,6 +24,7 @@ class App extends Component {
                 <Route path="/" element={<Contacts />} />
                 <Route path="about" element={<About />} />
                 <Route path="contact/add" element={<AddContact />} />
+                <Route path="misc" element={<Misc />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </div>
