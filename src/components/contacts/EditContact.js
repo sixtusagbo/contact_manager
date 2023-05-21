@@ -30,7 +30,7 @@ const EditContact = () => {
       // Manually added, just find it
       dispatch(setContactToEdit(contacts.find(contact => contact.id === id)));
     }
-  }, [dispatch, id]);
+  }, [dispatch, id, canMakeRequest, contacts]);
 
   const onChange = e =>
     dispatch(

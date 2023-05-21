@@ -14,7 +14,7 @@ const Contacts = () => {
     if (contactStatus === 'idle') {
       dispatch(getContacts());
     }
-  }, [contactStatus]);
+  }, [contactStatus, dispatch]);
 
   return (
     <React.Fragment>
