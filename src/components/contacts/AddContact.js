@@ -25,7 +25,6 @@ const AddContact = () => {
 
   const onSubmit = async e => {
     e.preventDefault();
-    const { name, email, phone } = contact;
 
     if (name === '') {
       setErrors({ name: 'Name is required' });
