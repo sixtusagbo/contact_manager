@@ -63,8 +63,8 @@ const AddContact = () => {
   };
 
   return (
-    <div className="card mb-3">
-      <div className="card-header">Add Contact</div>
+    <div className="card mb-3 border-warning">
+      <div className="card-header bg-warning border-0">Add Contact</div>
       <div className="card-body">
         <form onSubmit={onSubmit}>
           <TextInputGroup
@@ -96,7 +96,7 @@ const AddContact = () => {
           <input
             type="submit"
             value="Add Contact"
-            className="btn btn-light btn-block"
+            className="btn btn-outline-warning btn-block"
           />
         </form>
       </div>

@@ -10,7 +10,7 @@ const initialState = {
 export const getContacts = createAsyncThunk(
   'contacts/getContacts',
   async () => {
-    const res = await axios.get('https://jsonplaceholder.typicode.com/usersi');
+    const res = await axios.get('https://jsonplaceholder.typicode.com/users');
 
     return res.data.map(contact => {
       return {

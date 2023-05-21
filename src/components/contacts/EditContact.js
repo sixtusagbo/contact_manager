@@ -58,8 +58,8 @@ const EditContact = () => {
   };
 
   return (
-    <div className="card mb-3">
-      <div className="card-header">Edit Contact</div>
+    <div className="card mb-3 border-warning">
+      <div className="card-header bg-warning border-0">Edit Contact</div>
       <div className="card-body">
         <form onSubmit={onSubmit}>
           <TextInputGroup
@@ -91,7 +91,7 @@ const EditContact = () => {
           <input
             type="submit"
             value="Update Contact"
-            className="btn btn-light btn-block"
+            className="btn btn-outline-warning btn-block"
           />
         </form>
       </div>

@@ -24,9 +24,10 @@ const Contact = ({ contact }) => {
           style={{ cursor: 'pointer' }}
         ></i>
         <i
-          className="fas fa-times"
+          className="fas fa-trash-alt"
           style={{ cursor: 'pointer', float: 'right', color: 'red' }}
           onClick={() => onDeleteClick(id)}
+          title="Delete Contact"
         ></i>
         <Link to={`contact/edit/${id}`}>
           <i
@@ -36,7 +37,9 @@ const Contact = ({ contact }) => {
               float: 'right',
               color: '#000',
               marginRight: '1rem',
+              color: 'var(--primary)',
             }}
+            title="Edit Contact"
           ></i>
         </Link>
       </h4>

@@ -19,7 +19,7 @@ const Contacts = () => {
   return (
     <React.Fragment>
       <h1 className="display-5 mb-2">
-        <span className="text-danger">Contact</span> List
+        <span className="text-warning">Contact</span> List
       </h1>
       {contactError && (
         <h3 className="display-5 text-danger mt-4">🥹 {contactError}</h3>
