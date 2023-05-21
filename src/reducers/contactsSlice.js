@@ -1,27 +1,27 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 const initialState = {
-  contacts: [
-    {
-      id: 1,
-      name: 'John Doe',
-      email: 'jdoe@gmail.com',
-      phone: '555-555-5555',
-    },
-    {
-      id: 2,
-      name: 'Karen Williams',
-      email: 'karen@gmail.com',
-      phone: '222-222-2222',
-    },
-    {
-      id: 3,
-      name: 'Henry Johnson',
-      email: 'henry@gmail.com',
-      phone: '111-111-1111',
-    },
-  ],
+  contacts: null,
+  status: 'idle',
+  error: null,
 };
+
+export const getContacts = createAsyncThunk(
+  'contacts/getContacts',
+  async () => {
+    const res = await axios.get('https://jsonplaceholder.typicode.com/usersi');
+
+    return res.data.map(contact => {
+      return {
+        id: contact.id,
+        name: contact.name,
+        email: contact.email,
+        phone: contact.phone,
+      };
+    });
+  }
+);
 
 const contactsSlice = createSlice({
   name: 'contacts',
@@ -41,6 +41,24 @@ const contactsSlice = createSlice({
         ),
       };
     },
+  },
+  extraReducers: builder => {
+    builder
+      .addCase(getContacts.pending, state => {
+        /**
+         * [Immer - German for always](https://immerjs.github.io/immer) does the
+         * immutability heavy lifting for me.
+         */
+        state.status = 'loading';
+      })
+      .addCase(getContacts.fulfilled, (state, action) => {
+        state.status = 'successful';
+        state.contacts = action.payload;
+      })
+      .addCase(getContacts.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      });
   },
 });
 
