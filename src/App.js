@@ -6,26 +6,31 @@ import Header from './components/layout/Header';
 import About from './components/pages/About';
 import NotFound from './components/pages/NotFound';
 
+import { Provider } from 'react-redux';
+import store from './store';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import './App.css';
 
 const App = () => {
   return (
-    <Router>
-      <div className="App">
-        <Header brandName="Contact Manager" />
-        <div className="container">
-          <Routes>
-            <Route path="/" element={<Contacts />} />
-            <Route path="about" element={<About />} />
-            <Route path="contact/add" element={<AddContact />} />
-            <Route path="contact/edit/:id" element={<EditContact />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+    <Provider store={store}>
+      <Router basename={process.env.PUBLIC_URL}>
+        <div className="App">
+          <Header brandName="Contact Manager" />
+          <div className="container">
+            <Routes>
+              <Route path="/" element={<Contacts />} />
+              <Route path="about" element={<About />} />
+              <Route path="contact/add" element={<AddContact />} />
+              <Route path="contact/edit/:id" element={<EditContact />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </div>
         </div>
-      </div>
-    </Router>
+      </Router>
+    </Provider>
   );
 };
 
