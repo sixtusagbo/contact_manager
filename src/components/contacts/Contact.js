@@ -1,14 +1,17 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { deleteContact } from '../../reducers/contactsReducer';
 
 const Contact = ({ contact }) => {
   const { name, email, phone, id } = contact;
   const [showContactInfo, setShowContactInfo] = useState(false);
+  const dispatch = useDispatch();
 
   const onDeleteClick = id => {
     // Delete Contact
-    console.log(id);
+    dispatch(deleteContact(id));
   };
 
   return (
