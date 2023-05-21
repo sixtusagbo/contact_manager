@@ -1,5 +1,8 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { v4 as uuid } from 'uuid';
+import { addContact } from '../../reducers/contactsReducer';
 import TextInputGroup from '../layout/TextInputGroup';
 
 const AddContact = () => {
@@ -11,6 +14,7 @@ const AddContact = () => {
   const { name, email, phone } = contact;
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const onChange = e =>
     setContact({
@@ -38,12 +42,14 @@ const AddContact = () => {
     }
 
     const newContact = {
+      id: uuid(),
       name,
       email,
       phone,
     };
 
     // Submit Contact
+    dispatch(addContact(newContact));
 
     // Clear state
     setContact({
