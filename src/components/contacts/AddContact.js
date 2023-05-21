@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { v4 as uuid } from 'uuid';
-import { addContact } from '../../reducers/contactsSlice';
+import { submitNewContact } from '../../reducers/contactsSlice';
 import TextInputGroup from '../layout/TextInputGroup';
 
 const AddContact = () => {
@@ -15,6 +14,8 @@ const AddContact = () => {
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [addRequestStatus, setAddRequestStatus] = useState('idle');
+  const [addRequestError, setAddRequestError] = useState('');
 
   const onChange = e =>
     setContact({
@@ -22,7 +23,7 @@ const AddContact = () => {
       [e.target.name]: e.target.value,
     });
 
-  const onSubmit = e => {
+  const onSubmit = async e => {
     e.preventDefault();
     const { name, email, phone } = contact;
 
@@ -42,14 +43,19 @@ const AddContact = () => {
     }
 
     const newContact = {
-      id: uuid(),
       name,
       email,
       phone,
     };
 
     // Submit Contact
-    dispatch(addContact(newContact));
+    try {
+      setAddRequestStatus('pending');
+      await dispatch(submitNewContact(newContact)).unwrap();
+    } catch (error) {
+      setAddRequestError(`Failed to save contact: error`);
+      setAddRequestStatus('failed');
+    }
 
     // Clear state
     setContact({
@@ -64,7 +70,10 @@ const AddContact = () => {
 
   return (
     <div className="card mb-3 border-warning">
-      <div className="card-header bg-warning border-0">Add Contact</div>
+      <div className="card-header bg-warning border-0">
+        Add Contact
+        {addRequestError && <p className="text-danger">{addRequestError}</p>}
+      </div>
       <div className="card-body">
         <form onSubmit={onSubmit}>
           <TextInputGroup
@@ -97,6 +106,7 @@ const AddContact = () => {
             type="submit"
             value="Add Contact"
             className="btn btn-outline-warning btn-block"
+            disabled={addRequestStatus === 'pending'}
           />
         </form>
       </div>
