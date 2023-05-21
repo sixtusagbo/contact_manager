@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { deleteContact } from '../../reducers/contactsReducer';
+import { deleteContact } from '../../reducers/contactsSlice';
 
 const Contact = ({ contact }) => {
   const { name, email, phone, id } = contact;

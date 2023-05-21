@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectContacts } from '../../reducers/contactsReducer';
+import { selectContacts } from '../../reducers/contactsSlice';
 import Contact from './Contact';
 
 const Contacts = () => {
