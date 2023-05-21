@@ -5,6 +5,8 @@ import {
   getContact,
   selectContacts,
   setContactToEdit,
+  updateContact,
+  updateContactSync,
 } from '../../reducers/contactsSlice';
 import TextInputGroup from '../layout/TextInputGroup';
 
@@ -57,6 +59,7 @@ const EditContact = () => {
     }
 
     const modifiedContact = {
+      id,
       name,
       email,
       phone,
@@ -65,8 +68,10 @@ const EditContact = () => {
     // Update Contact
     if (canMakeRequest) {
       // Comes from jsonplaceholder make a request
+      dispatch(updateContact(modifiedContact));
     } else {
       // Manually added, just update state
+      dispatch(updateContactSync(modifiedContact));
     }
 
     // Clear state
