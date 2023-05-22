@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { submitNewContact } from '../../reducers/contactsSlice';
+import { submitNewContact } from '../../slices/contactsSlice';
 import TextInputGroup from '../layout/TextInputGroup';
 
 const AddContact = () => {

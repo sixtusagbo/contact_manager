@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts, selectContacts } from '../../reducers/contactsSlice';
+import { getContacts, selectContacts } from '../../slices/contactsSlice';
 import Contact from './Contact';
 
 const Contacts = () => {

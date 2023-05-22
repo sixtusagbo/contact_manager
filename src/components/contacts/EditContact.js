@@ -7,7 +7,7 @@ import {
   setContactToEdit,
   updateContact,
   updateContactSync,
-} from '../../reducers/contactsSlice';
+} from '../../slices/contactsSlice';
 import TextInputGroup from '../layout/TextInputGroup';
 
 const EditContact = () => {

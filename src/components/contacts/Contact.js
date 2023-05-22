@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { deleteContact } from '../../reducers/contactsSlice';
+import { deleteContact } from '../../slices/contactsSlice';
 
 const Contact = ({ contact }) => {
   const { name, email, phone, id } = contact;
@@ -35,7 +35,6 @@ const Contact = ({ contact }) => {
             style={{
               cursor: 'pointer',
               float: 'right',
-              color: '#000',
               marginRight: '1rem',
               color: 'var(--primary)',
             }}
